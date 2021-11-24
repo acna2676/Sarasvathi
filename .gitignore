@@ -1,5 +1,8 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
+#django secret
+local_settings.py
+
 # dependencies
 frontend/react-basic/node_modules
 frontend/react-basic/.pnp
