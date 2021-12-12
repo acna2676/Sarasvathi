@@ -6,13 +6,51 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
   </head>
+  <style>
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: sans-serif; /*インストールされているゴシック体を使用する*/
+    }
+    .container {
+      height: 100%;
+      width: 100%;
+    }
+    .header {
+      background-color: #467fd3;
+      height: 104px;
+      display: flex; /*子要素の配置方法*/
+      flex-direction: column;
+      justify-content: flex-end;
+      position: relative;
+    }
+    .header-title {
+      font-size: 24px;
+      line-height: 32px;
+      margin-bottom: 8px;
+      color: white;
+      font-weight: normal;
+      text-align: center;
+    }
+    .header-right {
+      position: absolute;
+      right: 19px;
+      bottom: 8px;
+      font-size: 12px;
+      line-height: 24px;
+      border: 0;
+      background-color: transparent;
+      color: rgba(255, 255, 255, 0.7);
+    }
+  </style>
   <body>
-    <div>
+    <div class="container">
       <!-- Header -->
-      <div>
+      <div class="header">
         <div>
-          <h1>Memo App</h1>
-          <button>Log Out</button>
+          <h1 class="header-title">Memo App</h1>
+          <button class="header-right">Log Out</button>
         </div>
       </div>
       <!-- Scroll -->
@@ -49,7 +87,7 @@
           </div>
         </div>
       </div>
+      <button>+</button>
     </div>
-    <button>+</button>
   </body>
 </html>

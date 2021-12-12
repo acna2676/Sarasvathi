@@ -1,0 +1,43 @@
+##EC2(example_EC2)
+resource "aws_instance" "example_EC2" {
+  ami                     = var.ami
+  instance_type           = var.instance_type
+  disable_api_termination = false
+  key_name                = "EC2-key"
+  vpc_security_group_ids  = [var.config.security_group_id]
+  subnet_id             = var.config.subnet-a_id
+
+  root_block_device {
+    volume_type = "gp2"
+    volume_size = var.volume_size
+  }
+
+  tags = {
+    Name = "example_EC2"
+  }
+}
+
+##EIP(example_EC2)
+resource "aws_eip" "example_EC2" {
+  instance = "${aws_instance.example_EC2.id}"
+  vpc      = true
+}
+variable "config" {
+  type = object({
+    subnet-a_id = string
+    subnet-c_id = string
+    security_group_id = string
+  })
+}
+
+variable "ami" {
+  default = "ami-XXXXXXXXXXXX"
+}
+
+variable "instance_type" {
+  default = "t2.micro"
+}
+
+variable "volume_size" {
+  default = "8"
+}
