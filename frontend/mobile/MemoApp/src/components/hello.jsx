@@ -1,13 +1,13 @@
 import React from 'react';
 import {View,Text,StyleSheet} from 'reace-native';
-import {string, bool} from 'props-types';
+import {string, bool, shape} from 'props-types';
 
 
 function Hello(props){
-    const {children, bang} = props;
+    const {children, bang, style} = props;
     return (
         <View>
-        <Text style={styles.text}>
+        <Text style={[styles.text], style}>
         {`Hello ${children}${bang ?'!': ''}`}
             </Text>
         </View>
@@ -17,10 +17,12 @@ function Hello(props){
 Hello.proptypes = {
     children: string.isRequired,
     bang: bool,
+    style: shape(),
 }
 
 Hello.defaultProps = {
     bang:false,
+    style:null,
 };
 
 const styles = StyleSheetcreate({

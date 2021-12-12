@@ -7,7 +7,8 @@ import Hello from './components/Hello'
 export default function App() {
   return (
     <View style={styles.container}>
-      <Hello>World</Hello>
+      <Hello bang >World</Hello>
+      <Hello bang style={{fontSize:16}}>Small World</Hello>
       <Text>Open up App.js to start working on your app!</Text>
       <StatusBar style="auto" />
     </View>
