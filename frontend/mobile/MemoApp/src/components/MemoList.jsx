@@ -1,5 +1,7 @@
 import React from "react";
-import {View, Text, StyleSheet} from 'react-native';
+import {
+  View, Text, StyleSheet, TouchableOpacity
+} from 'react-native';
 // import { Feather } from "@expo/vector-icons";
 
 import Icon from './Icon'
@@ -12,11 +14,11 @@ export default function AppBar(){
             <Text style={styles.memoListItemTitle}>Shopping List</Text>
             <Text style={styles.memoListItemDate}>2021/12/13 12:00:00</Text>
           </View>
-          <View>
+          <TouchableOpacity>
             <Icon name="delete" size={24} color='#B0B0B0' />
             {/* <Feather name="x" size={16} color='#B0B0B0' /> */}
             {/* <Text>X</Text> */}
-          </View>
+          </TouchableOpacity>
         </View>
       </View>
 
