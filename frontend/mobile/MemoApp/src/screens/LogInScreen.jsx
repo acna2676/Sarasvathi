@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React,{useState, useEffect} from 'react';
 import {View, StyleSheet, Text, TextInput, TouchableOpacity, Alert} from 'react-native';
 import firebase from 'firebase';
 
@@ -10,6 +10,18 @@ export default function LogInScreen(props){
   const {navigation} = props;
   const [email, setEmail] = useState('');//あくまでuseStateの書き方. ''はemailの初期値
   const [password, setPassword] = useState('');
+
+  useEffect(() => {
+    const unsubscribe = firebase.auth().onAuthStateChanged((user)=>{
+      if(user){
+        navigation.reset({
+          index:0,
+          routes:[{name:'MemoList'}],
+        });
+      }
+    });
+    return unsubscribe;//画面遷移の際にログイン状態の監視を解除する
+  },[]); 
 
   function handlePress(){
     firebase.auth().signInWithEmailAndPassword(email, password)
