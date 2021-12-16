@@ -13,6 +13,8 @@ import { TapGestureHandler } from 'react-native-gesture-handler';
 
 import { firebaseConfig} from './env';
 
+require('firebase/firestore');
+
 const Stack = createStackNavigator();
 
 if(firebase.apps.length===0){
