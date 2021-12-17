@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from 'react';
-import {View, StyleSheet, Alert} from 'react-native';
+import {View, StyleSheet, Alert, Text} from 'react-native';
 import firebase from 'firebase';
 
 // import AppBar from '../components/AppBar';
 import MemoList from '../components/MemoList';
 import CircleButton from '../components/CircleButton';
 import LogOutButton from '../components/LogOutButton';
+import Button from '../components/Button'
 
 export default function MemoListScreen(props){
   const {navigation} = props;
-  // const [mamos, setMemos] = useState([]);
+  const [mamos, setMemos] = useState([]);
   useEffect(()=>{
     navigation.setOptions({
       headerRight: ()=> <LogOutButton /> //アロー関数の内容が１行の場合は{}なしでもよい
@@ -41,6 +42,21 @@ export default function MemoListScreen(props){
   //   return unsubscribe;
   // }, []);
 
+  if (MemoListScreen.length===0){
+    return (
+      <View style={emptyStyles.container}>
+        <View style={emptyStyles.inner}>
+        <Text style={emptyStyles.title}>Let's create initial memo!</Text>
+        <Button 
+          style={emptyStyles.button}
+          label="Create" 
+          onPress={()=>{navigation.navigate('MemoCreate');}} 
+        />
+        </View>
+      </View>
+    )
+  }
+
   return (
       <View style={styles.container}>
       {/* <AppBar /> */}
@@ -57,5 +73,25 @@ const styles = StyleSheet.create({
     container: {
       flex: 1,
       backgroundColor: '#F0F4F8',
+    },
+  });
+
+  const emptyStyles = StyleSheet.create({
+    container: {
+      flex: 1,
+      bustifyContent:'center',
+      alighItem:'center'
+    },
+    inner: {
+      bustifyContent:'center',
+      alighItem:'center'
+    },
+    title: {
+      fontSize:18,
+      marginBottom:24,
+
+    },
+    button: {
+      alignSelf: 'center,'
     },
   });
