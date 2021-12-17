@@ -23,10 +23,12 @@ export default function MemoDetailScreen(props){
                 bodyText:data.bodyText,
                 updatedAt:data.updatedAt.toDate(),
             });
-        }, (error)=>{
-            console.log(error);
-            Alert.alert('Failed to read data');
-        });
+        }
+        // , (error)=>{
+        //     console.log(error);
+        //     Alert.alert('Failed to read data');
+        // }
+        );
         }
         return unsubscribe;
     }, []);
@@ -46,7 +48,7 @@ export default function MemoDetailScreen(props){
             <CircleButton 
             style={{top:60, bottom:'auto'}} 
             name='pencil' 
-            onPress={()=>{navigation.navigate('MemoEdit')}}
+            onPress={()=>{navigation.navigate('MemoEdit', {id:memo.id, bodyText:memo.bodyText})}}
             />
 
         </View>
