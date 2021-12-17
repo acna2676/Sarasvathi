@@ -4,17 +4,40 @@ import {
 } from 'react-native';
 // import { Feather } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
+// import {shape, string, instanceOf, arrayOf} from 'prop-types';
 
 import Icon from './Icon'
+import { instanceOf, string } from "prop-types";
+import MemoEditScreen from "../screens/MemoEditScreen";
 
-export default function AppBar(){
+export default function MemoList(){
+  // const {memos} = props;
   const navigation = useNavigation();
     return (
       <View>
+        {/* {MemoEditScreen.map((memo)=>{
+          return (
+            <TouchableOpacity 
+            key={memo.id}
+            style={styles.memoListItem}
+            onPress = {()=> {navigation.navigate('MemoDetail');}}
+            >
+            <View>
+              <Text style={styles.memoListItemTitle}>{memo.bodyText}</Text>
+              <Text style={styles.memoListItemDate}>string({memo.updatedAt})</Text>
+            </View>
+            <TouchableOpacity 
+            style={styles.memoDelete}
+            onPress={()=>{Alert.alert('Are you sure?')}}>
+              <Icon name="delete" size={24} color='#B0B0B0' />
+            </TouchableOpacity>
+          </TouchableOpacity>
+          )
+        })} */}
         <TouchableOpacity 
-        style={styles.memoListItem}
-        onPress = {()=> {navigation.navigate('MemoDetail');}}
-        >
+          style={styles.memoListItem}
+          onPress = {()=> {navigation.navigate('MemoDetail');}}
+          >
           <View>
             <Text style={styles.memoListItemTitle}>Shopping List</Text>
             <Text style={styles.memoListItemDate}>2021/12/13 12:00:00</Text>
@@ -28,9 +51,16 @@ export default function AppBar(){
           </TouchableOpacity>
         </TouchableOpacity>
       </View>
-
-)
+);
 }
+
+// MemoList.prototype={
+//   memos: arrayOf(shape({
+//     id: string,
+//     bodyText: string,
+//     updatedAt: instanceOf(Date),
+//   })).isRequired,
+// }
 
 const styles = StyleSheet.create({
     memoListItem: {
