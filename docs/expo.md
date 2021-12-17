@@ -7,5 +7,5 @@ expo init
 ## プロジェクトの開始
 
 ```bash
-expo start
+expo start [-c: clear cache]
 ```

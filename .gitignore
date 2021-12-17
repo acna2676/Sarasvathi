@@ -37,6 +37,7 @@ npm-debug.*
 *.mobileprovision
 *.orig.*
 frontend/mobile/MemoApp/web-build/
+frontend/mobile/MemoApp/env.js
 
 # macOS
 .DS_Store
