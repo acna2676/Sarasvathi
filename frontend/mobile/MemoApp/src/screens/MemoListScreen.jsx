@@ -7,10 +7,12 @@ import MemoList from '../components/MemoList';
 import CircleButton from '../components/CircleButton';
 import LogOutButton from '../components/LogOutButton';
 import Button from '../components/Button'
+import Loading from '../components/Loading'
 
 export default function MemoListScreen(props){
   const {navigation} = props;
-  const [mamos, setMemos] = useState([]);
+  const [memos, setMemos] = useState([]);
+  const [isLoading, setLoading] = useState([false]);
   useEffect(()=>{
     navigation.setOptions({
       headerRight: ()=> <LogOutButton /> //アロー関数の内容が１行の場合は{}なしでもよい
@@ -22,6 +24,7 @@ export default function MemoListScreen(props){
   //   const { currentUser } = firebase.auth();
   //   let unsubscribe = () => {};
   //   if(currentUser){
+          setLoading(true);
   //     const ref = db.collection(`users/${currentUser.uid}/memos`).orderBy('updatedAt', 'desc');
   //     unsubscribe = ref.onSnapshot((snapshot)=>{
   //       // const userMemos = [];
@@ -34,9 +37,12 @@ export default function MemoListScreen(props){
   //           // updatedAt: data.updatedAt.toDate,
   //         // });
   //       });
-  //     }, (error)=>{
+            setMemos(userMemos);
+            setLoading(false);
+    //     }, (error)=>{
   //       console.log(error);
-  //       Alert.alert('Failed to read data');
+              setLoading(false);
+    //       Alert.alert('Failed to read data');
   //     });
   //   }
   //   return unsubscribe;
@@ -45,6 +51,7 @@ export default function MemoListScreen(props){
   if (MemoListScreen.length===0){
     return (
       <View style={emptyStyles.container}>
+      < Loading isLoading/>
         <View style={emptyStyles.inner}>
         <Text style={emptyStyles.title}>Let's create initial memo!</Text>
         <Button 
