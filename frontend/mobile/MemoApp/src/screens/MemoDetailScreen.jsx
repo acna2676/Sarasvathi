@@ -1,11 +1,14 @@
 import React from 'react'
+import {shape, string} from 'prop-types';
 import {View, ScrollView,Text, StyleSheet} from 'react-native'
 
 // import AppBar from '../components/AppBar'
 import CircleButton from '../components/CircleButton'
 
 export default function MemoDetailScreen(props){
-    const {navigation} = props;
+    const {navigation, routes} = props;
+    const {id} = routes.params;
+    console.log(id);
     return (
         <View style={styles.container}>
             {/* <AppBar /> */}
@@ -28,6 +31,14 @@ export default function MemoDetailScreen(props){
         </View>
     )
 }
+
+MemoDetailScreen.prototype={
+    route:shape({
+      route: shape({
+          params: shape({id:string})
+      })
+    }).isRequired,
+  }
 
 const styles = StyleSheet.create({
     container:{
