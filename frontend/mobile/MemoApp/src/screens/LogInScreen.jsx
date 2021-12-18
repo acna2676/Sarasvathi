@@ -5,11 +5,13 @@ import firebase from 'firebase';
 // import AppBar from '../components/AppBar';
 
 import Button from '../components/Button';
+import Loading from '../components/Loading';
 
 export default function LogInScreen(props){
   const {navigation} = props;
   const [email, setEmail] = useState('');//あくまでuseStateの書き方. ''はemailの初期値
   const [password, setPassword] = useState('');
+  const [isLoadig, setLoading] = useState(true);
 
   useEffect(() => {
     const unsubscribe = firebase.auth().onAuthStateChanged((user)=>{
@@ -18,12 +20,15 @@ export default function LogInScreen(props){
           index:0,
           routes:[{name:'MemoList'}],
         });
+      }else{ //ログインしていない場合
+        setLoading(false);
       }
     });
     return unsubscribe;//画面遷移の際にログイン状態の監視を解除する
   },[]); 
 
   function handlePress(){
+    setLoading(true);
     firebase.auth().signInWithEmailAndPassword(email, password)
       .then((userCredential)=>{
         const {user} = userCredential;
@@ -36,10 +41,14 @@ export default function LogInScreen(props){
       .catch((error)=>{
         console.log(error.code, error.message);
         Alert.alert(error.code);
+      })
+      .then(()=>{
+        setLoading(false);
       });
-  }
+  } 
     return (
         <View style={styles.container} behavior='height'>
+          <Loading isLoading={isLoading} />
           {/* <AppBar /> */}
           <View style={styles.inner}>
             <Text>Log In</Text>
