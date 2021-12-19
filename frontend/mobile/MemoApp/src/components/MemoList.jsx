@@ -5,13 +5,35 @@ import {
 // import { Feather } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import {shape, string, instanceOf, arrayOf} from 'prop-types';
+import firebase from "firebase";
 
 import Icon from './Icon'
 import { dateToString } from '../utils';
+import { createIconSetFromIcoMoon } from "@expo/vector-icons";
 
 export default function MemoList(){
   const {memos} = props;
   const navigation = useNavigation();
+
+  function deleteMemo(id){
+    const { currentUser } = firebase.auth();
+    // const db = firebase.firestore();
+    const ref = db.collection(`users/${currentUser.uid}/memos`);
+    Alert.alert('Delete memo. Are you sure?',[
+      {
+        text:'Cancel', 
+        onPress:()=>{},
+      },
+      {
+        text:'Delte', 
+        style:'destructive', 
+        onPress:()=>{
+          ref.delete().catch(()=>{
+            Alert.alert('Failed to delete');
+          })
+        },
+      }])
+  }
 
   function renderItem({item}){
     return (
@@ -25,7 +47,7 @@ export default function MemoList(){
         </View>
         <TouchableOpacity 
         style={styles.memoDelete}
-        onPress={()=>{Alert.alert('Are you sure?')}}>
+        onPress={()=>{deleteMemo(item.id);}}>
           <Icon name="delete" size={24} color='#B0B0B0' />
         </TouchableOpacity>
       </TouchableOpacity>
