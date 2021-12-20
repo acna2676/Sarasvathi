@@ -8,7 +8,7 @@
     "icon": "./assets/icon.png",
     "splash": {
       "image": "./assets/splash.png",
-      "resizeMode": "cover",
+      "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
     "updates": {
@@ -16,17 +16,12 @@
     },
     "assetBundlePatterns": ["**/*"],
     "ios": {
-      "supportsTablet": false,
-      "bundleIdentifier": "com.stone.memoapp",
-      "buildNumber": "1.0.0"
+      "supportsTablet": true
     },
     "android": {
-      "package": "com.stone.memoapp",
-      "versionCode": 1,
-      "permmissions": [],
       "adaptiveIcon": {
-        "foregroundImage": "./assets/icon_adaptive_foreground.png",
-        "backgroundImage": "./assets/icon_adaptive_background.png"
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#FFFFFF"
       }
     },
     "web": {
