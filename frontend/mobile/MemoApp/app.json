@@ -17,11 +17,11 @@
     "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": false,
-      "bundleIdentifier": "com.stone.memoapp",
+      "bundleIdentifier": "com.acna2676.MemoApp",
       "buildNumber": "1.0.0"
     },
     "android": {
-      "package": "com.stone.memoapp",
+      "package": "com.acna2676.MemoApp",
       "versionCode": 1,
       "permmissions": [],
       "adaptiveIcon": {
