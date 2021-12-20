@@ -41,7 +41,7 @@ export default function MemoList(){
         style={styles.memoListItem}
         onPress = {()=> {navigation.navigate('MemoDetail', {id:item.id});}}
         >
-        <View>
+        <View style={styles.memoInner}>
           <Text style={styles.memoListItemTitle} numberOfLines={1}>{item.bodyText}</Text>
           <Text style={styles.memoListItemDate}>{dateToString(item.updatedAt)}</Text>
         </View>
@@ -87,16 +87,19 @@ const styles = StyleSheet.create({
         borderBottomWidth:1,
         borderColor:'rgba(0,0,0,0.15)'
       },
-      memoListItemTitle: {
-    fontSize:16,
-    lineHeight: 32,
-      },
-      memoListItemDate: {
-        fontSize:12,
-        lineHeight: 16,
-        color: '#848484'
-          },
-          memoDelete: {
-            padding: 8,
-              },
-        });
+    memoInner:{
+        flex:1
+    },
+    memoListItemTitle: {
+      fontSize:16,
+      lineHeight: 32,
+    },
+    memoListItemDate: {
+      fontSize:12,
+      lineHeight: 16,
+      color: '#848484'
+    },
+    memoDelete: {
+      padding: 8,
+    },
+});

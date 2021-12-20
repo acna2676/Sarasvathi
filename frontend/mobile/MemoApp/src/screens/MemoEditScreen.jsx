@@ -66,8 +66,6 @@ const styles = StyleSheet.create({
       backgroundColor: '#F0F4F8',
     },
     inputContainer:{
-        paddingHorizontal: 27,
-        paddingVertical: 32,
         flex:1,
     },
     input:{
@@ -75,6 +73,9 @@ const styles = StyleSheet.create({
         textAlignVertical:'top',
         fontSize: 16,
         lineHeight:24,
+        paddingTop: 32,// paddingVerticalだとなぜかスタイルが適用されないためpadingTopとpaddingBottomを使用してる
+        paddingBottom: 32,
+        paddingHorizontal: 27,
     }
   });
 
