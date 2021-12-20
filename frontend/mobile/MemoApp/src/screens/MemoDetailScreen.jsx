@@ -8,7 +8,6 @@ import { dateToString } from '../utils';
 export default function MemoDetailScreen(props){
     const {navigation, routes} = props;
     const {id} = routes.params;
-    console.log(id);
     const [memo, setMemo] = useState(null);
 
     useEffect(()=>{
@@ -18,7 +17,6 @@ export default function MemoDetailScreen(props){
         if(currentUser){
             unsubscribe = ref.onSnapshot((doc)=>{
             console.log(doc.id, doc.data());
-            const data = doc.data();
             setMemo({
                 bodyText:data.bodyText,
                 updatedAt:data.updatedAt.toDate(),

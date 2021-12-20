@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import {View, StyleSheet, Alert, Text} from 'react-native';
+import {
+  View, StyleSheet, Alert, Text,
+} from 'react-native';
 import firebase from 'firebase';
 
 // import AppBar from '../components/AppBar';
